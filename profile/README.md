@@ -134,7 +134,6 @@ Configuration is done via CLI flags and/or `.env` files.
 * `DISCORD_WEBHOOK_URL` - (Optional) Discord webhook URL for notifications.
 * `SLACK_WEBHOOK_URL` - (Optional) Slack webhook URL for notifications.
 
----
 
 ## 📊 Output
 
