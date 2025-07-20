@@ -37,34 +37,34 @@ The project is designed for **automated security auditing, bulk code scanning, a
 ## 🏗️ Architecture
 
 ```
-                                              +---------------------+
-                                              |   [GitHub Repos]    |
-                                              +----------+----------+
-                                                         |
-                                                         v
-                                              +---------------------+
-                                              | Vulnerability Scan  |   (CodeQL / Semgrep / Snyk)
-                                              +----------+----------+
-                                                         |
-                                            SARIF/JSON   v
-                                              +---------------------+
-                                              |    autofic-core     |
-                                              |   (Orchestrator)    |
-                                              +----------+----------+
-                                                         |
-                                      +------------------+-------------------+
-                                      |                                      |
-                                      v                                      v
-                            +---------------------+                +---------------------+
-                            |   LLM-based Patch   |<-------------->|   Patch Validator   |
-                            |  (OpenAI, etc.)     |                |   (Optional CI)     |
-                            +---------------------+                +---------------------+
-                                      |
-                                      v
-                              +---------------+
-                              |  Auto PR to   |
-                              |   GitHub Repo |
-                              +---------------+
+                                            +---------------------+
+                                            |   [GitHub Repos]    |
+                                            +----------+----------+
+                                                       |
+                                                       v
+                                            +---------------------+
+                                            | Vulnerability Scan  |   (CodeQL / Semgrep / Snyk)
+                                            +----------+----------+
+                                                       |
+                                          SARIF/JSON   v
+                                            +---------------------+
+                                            |    autofic-core     |
+                                            |   (Orchestrator)    |
+                                            +----------+----------+
+                                                       |
+                                    +------------------+-------------------+
+                                    |                                      |
+                                    v                                      v
+                          +---------------------+                +---------------------+
+                          |   LLM-based Patch   |<-------------->|   Patch Validator   |
+                          |  (OpenAI, etc.)     |                |   (Optional CI)     |
+                          +---------------------+                +---------------------+
+                                    |
+                                    v
+                            +---------------+
+                            |  Auto PR to   |
+                            |   GitHub Repo |
+                            +---------------+
 ```
 - **Vulnerability Scan** : Detect vulnerabilities with static analysis tools (CodeQL, Semgrep, Snyk).
 - **autofic-core** : Parses findings, sends code to LLM, receives patch suggestions, applies fixes.
@@ -133,14 +133,6 @@ Configuration is done via CLI flags and/or `.env` files.
 * `USER_NAME` - Name or ID for audit trails or commit information.
 * `DISCORD_WEBHOOK_URL` - (Optional) Discord webhook URL for notifications.
 * `SLACK_WEBHOOK_URL` - (Optional) Slack webhook URL for notifications.
-
-
-## 📊 Output
-
-* **SARIF** : Standardized vulnerability format.
-* **JSON** : Machine-readable output for dashboards or scripts.
-* **Logs** : Rich logs with `rich` library for colorful output.
-
 
 
 ## 🤝 Contributing
